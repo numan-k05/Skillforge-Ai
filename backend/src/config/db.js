@@ -3,12 +3,22 @@ import { env } from "./env.js";
 
 const { Pool } = pg;
 
+function databaseConnectionString(value) {
+  if (!env.isProduction || !value) return value;
+  const url = new URL(value);
+  // TLS is configured explicitly below. Leaving libpq's sslmode in the URL
+  // makes pg parse two competing TLS configurations and emit a warning on
+  // every serverless cold start.
+  url.searchParams.delete("sslmode");
+  return url.toString();
+}
+
 export const pool = new Pool({
   max: env.databasePoolMax,
   connectionTimeoutMillis: 5000,
   idleTimeoutMillis: 10000,
   allowExitOnIdle: true,
-  connectionString: env.databaseUrl,
+  connectionString: databaseConnectionString(env.databaseUrl),
   ssl: env.isProduction ? { rejectUnauthorized: env.dbSslRejectUnauthorized } : false,
 });
 

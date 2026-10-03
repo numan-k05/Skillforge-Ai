@@ -46,7 +46,7 @@ router.get("/ready", async (req, res) => {
     const result = await pool.query(`SELECT
       to_regclass('public.users') IS NOT NULL AS users_ready,
       to_regclass('public.skillforge_schema_migrations') IS NOT NULL AS migrations_ready,
-      EXISTS (SELECT 1 FROM skillforge_schema_migrations WHERE filename='045_monthly_subscription.sql') AS current_schema`);
+      EXISTS (SELECT 1 FROM skillforge_schema_migrations WHERE filename='046_seed_pkr_product_prices.sql') AS current_schema`);
     const ready = Object.values(result.rows[0]).every(Boolean);
     res.status(ready ? 200 : 503).json({ status: ready ? "ready" : "not_ready", database: ready ? "ready" : "schema_incomplete" });
   } catch { res.status(503).json({ status: "not_ready", database: "unavailable" }); }

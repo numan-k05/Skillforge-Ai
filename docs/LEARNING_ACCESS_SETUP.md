@@ -23,7 +23,7 @@ npm.cmd run db:setup --prefix backend
 npm.cmd run db:verify --prefix backend
 ```
 
-Migrations `043_manual_payments.sql` and `044_manual_payment_revisions.sql` add private payment submissions and immutable correction history. Migration `045_monthly_subscription.sql` adds expiring access and the 30-day all-access product. They do not remove skills, courses, or progress. All have already been applied to the local database.
+Migrations `043_manual_payments.sql` and `044_manual_payment_revisions.sql` add private payment submissions and immutable correction history. Migration `045_monthly_subscription.sql` adds expiring access and the 30-day all-access product. Migration `046_seed_pkr_product_prices.sql` makes the manual-checkout PKR catalog reproducible on a clean database. They do not remove skills, courses, or progress.
 
 Keep existing `.env` files. For a fresh installation only, copy the examples when the corresponding `.env` does not exist:
 

@@ -9,7 +9,7 @@ try {
   await client.connect();
   const result = await client.query(`SELECT
     (SELECT COUNT(*)::int FROM skillforge_schema_migrations) AS migration_count,
-    EXISTS(SELECT 1 FROM skillforge_schema_migrations WHERE filename='045_monthly_subscription.sql') AS latest_migration,
+    EXISTS(SELECT 1 FROM skillforge_schema_migrations WHERE filename='046_seed_pkr_product_prices.sql') AS latest_migration,
     (SELECT COUNT(*)::int FROM skills) AS skill_count,
     (SELECT COUNT(*)::int FROM products p JOIN product_prices pp ON pp.product_id=p.id WHERE p.product_type='skill_pass' AND p.status='active' AND pp.currency='PKR' AND pp.amount_minor=99900 AND pp.is_active=TRUE) AS pkr_skill_pass_count,
     (SELECT COUNT(*)::int FROM products p JOIN product_prices pp ON pp.product_id=p.id WHERE p.product_type='career_bundle' AND p.status='active' AND pp.currency='PKR' AND pp.amount_minor=199900 AND pp.is_active=TRUE) AS pkr_career_bundle_count,
@@ -82,8 +82,8 @@ try {
       'multi-channel-content-campaign','lifecycle-email-campaign','performance-campaign-optimization','consultative-sales-pipeline'
     ]]);
   Object.assign(check,bundleResult.rows[0]);
-  if (!check.latest_migration) throw new Error("Migration 045_monthly_subscription.sql is not applied.");
-  if (check.migration_count < 45) throw new Error(`Expected at least 45 migrations; found ${check.migration_count}.`);
+  if (!check.latest_migration) throw new Error("Migration 046_seed_pkr_product_prices.sql is not applied.");
+  if (check.migration_count < 46) throw new Error(`Expected at least 46 migrations; found ${check.migration_count}.`);
   if (check.pkr_skill_pass_count < 8 || check.pkr_career_bundle_count < 5 || !check.monthly_subscription_ready) throw new Error("The PKR Skill Pass, Career Bundle, or monthly subscription pricing is incomplete.");
   if (check.skill_count < 49) throw new Error(`Expected at least 49 skills; found ${check.skill_count}.`);
   if (check.published_course_count < 8) throw new Error(`Expected at least 8 published starter courses; found ${check.published_course_count}.`);

@@ -95,7 +95,7 @@ Remove-Item Env:DOTENV_CONFIG_PATH
 Remove-Item -LiteralPath .env.migrate
 ```
 
-The migration runner applies the numbered files in `database/schema` once and records them in `skillforge_schema_migrations`. The current release requires all 45 migrations through `045_monthly_subscription.sql`.
+The migration runner applies the numbered files in `database/schema` once and records them in `skillforge_schema_migrations`. The current release requires all 46 migrations through `046_seed_pkr_product_prices.sql`.
 
 For a new production database, register the owner through the deployed application, then bootstrap the role from the trusted checkout using the same temporary migration environment:
 

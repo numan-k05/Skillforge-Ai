@@ -1,0 +1,3 @@
+export default function DataTable({ caption, columns, rows, rowKey = "id", emptyMessage = "No records found." }) {
+  return <div className="sf-table-wrap" role="region" aria-label={caption} tabIndex={0}><table className="sf-table"><caption>{caption}</caption><thead><tr>{columns.map((column) => <th scope="col" key={column.key}>{column.label}</th>)}</tr></thead><tbody>{rows.length ? rows.map((row) => <tr key={row[rowKey]}>{columns.map((column) => <td key={column.key}>{column.render ? column.render(row[column.key], row) : row[column.key]}</td>)}</tr>) : <tr><td colSpan={columns.length}>{emptyMessage}</td></tr>}</tbody></table></div>;
+}

@@ -1,0 +1,108 @@
+.sf-reqgroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sf-reqgroup__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.sf-reqgroup__count {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.sf-reqgroup__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.sf-reqitem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.sf-reqitem__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.sf-reqitem__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sf-reqitem__category {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sf-reqitem__desc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.sf-reqitem__levels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.sf-reqlevel {
+  display: grid;
+  grid-template-columns: 84px 1fr 34px;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.sf-reqlevel__label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.sf-reqlevel__track {
+  height: 8px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.sf-reqlevel__fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent-blue);
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.sf-reqlevel__value {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .sf-reqgroup__list {
+    grid-template-columns: 1fr;
+  }
+}

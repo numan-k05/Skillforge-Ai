@@ -1,0 +1,25 @@
+
+.public-page { padding: 92px 0 76px; min-height: 70vh; }
+.public-page__hero { max-width: 850px; margin: 0 auto 54px; text-align: center; }
+.public-page__eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--accent,#6d8cff); font-weight:700; margin-bottom:14px; }
+.public-page__hero h1 { font-size:clamp(2.45rem,6vw,4.8rem); line-height:1.05; margin:0 0 18px; }
+.public-page__hero > p { max-width:760px; margin:0 auto; color:var(--text-muted,#a9b0c3); line-height:1.8; font-size:1.08rem; }
+.public-page__actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:28px; }
+.public-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.public-card { border:1px solid var(--border,rgba(255,255,255,.12)); border-radius:20px; padding:26px; background:var(--surface,rgba(255,255,255,.03)); }
+.public-card__icon { display:inline-flex; padding:10px; border-radius:12px; color:var(--accent,#6d8cff); background:rgba(109,140,255,.14); }
+.public-card h2 { margin:18px 0 9px; font-size:1.25rem; }
+.public-card p { margin:0; color:var(--text-muted,#a9b0c3); line-height:1.7; }
+.public-card ul { padding-left:18px; margin:14px 0 0; color:var(--text-muted,#a9b0c3); line-height:1.8; }
+.public-section { margin-top:22px; border:1px solid var(--border,rgba(255,255,255,.12)); border-radius:22px; padding:32px; background:var(--surface,rgba(255,255,255,.03)); }
+.public-section h2 { margin:0 0 10px; font-size:clamp(1.65rem,3vw,2.2rem); }
+.public-section > p { color:var(--text-muted,#a9b0c3); line-height:1.75; margin:0; }
+.public-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px; }
+.public-step { padding:18px; border-left:2px solid var(--accent,#6d8cff); background:rgba(255,255,255,.025); border-radius:0 12px 12px 0; }
+.public-step strong { display:block; margin-bottom:7px; }
+.public-step span { color:var(--text-muted,#a9b0c3); line-height:1.6; font-size:.94rem; }
+.public-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.public-links a { text-decoration:none; color:inherit; border:1px solid var(--border,rgba(255,255,255,.12)); border-radius:12px; padding:12px 14px; }
+.public-links a:hover { border-color:var(--accent,#6d8cff); }
+@media (max-width: 900px) { .public-grid{grid-template-columns:1fr 1fr}.public-steps{grid-template-columns:1fr 1fr} }
+@media (max-width: 650px) { .public-page{padding-top:70px}.public-grid,.public-steps{grid-template-columns:1fr}.public-section{padding:24px} }

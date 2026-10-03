@@ -1,0 +1,41 @@
+{
+  "name": "skillforge-ai-backend",
+  "version": "1.0.0",
+  "description": "SkillForge AI — API server",
+  "main": "src/server.js",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test",
+    "db:setup": "node scripts/setupDatabase.js",
+    "db:verify": "node scripts/verifyDatabase.js",
+    "access:verify-owner": "node scripts/verifyOwnerAccess.js",
+    "db:rehearse": "node scripts/rehearseCleanDatabase.js",
+    "check:syntax": "node scripts/checkSyntax.js",
+    "admin:set-role": "node scripts/setUserRole.js",
+    "test:purchase-flow": "node scripts/verifyPurchaseFlow.js",
+    "test:manual-payments": "node scripts/verifyManualPaymentFlow.js",
+    "test:live": "node scripts/verifyLiveDeployment.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "nodemailer": "^10.0.9",
+    "pdfkit": "^0.20.2",
+    "pg": "^8.23.0",
+    "qrcode": "^1.5.4",
+    "zod": "^4.5.4"
+  }
+}

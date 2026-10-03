@@ -1,0 +1,10 @@
+.sf-dialog-backdrop { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: var(--space-5); background: rgba(4, 6, 11, .72); backdrop-filter: blur(5px); }
+.sf-dialog { position: relative; width: min(100%, 460px); padding: var(--space-7); background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+.sf-dialog__close { position: absolute; top: var(--space-4); right: var(--space-4); display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: var(--radius-md); background: transparent; color: var(--text-muted); cursor: pointer; }
+.sf-dialog__close:hover { color: var(--text-primary); background: var(--bg-surface-hover); }
+.sf-dialog__icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-md); background: var(--accent-blue-wash); color: var(--accent-blue-strong); margin-bottom: var(--space-4); }
+.sf-dialog__icon--danger { background: var(--accent-red-wash); color: var(--accent-red); }
+.sf-dialog h2 { font-size: var(--text-lg); }
+.sf-dialog p { color: var(--text-secondary); margin-top: var(--space-2); line-height: var(--leading-normal); }
+.sf-dialog__actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-6); }
+@media (max-width: 520px) { .sf-dialog { padding: var(--space-6); } .sf-dialog__actions { flex-direction: column-reverse; } .sf-dialog__actions .sf-btn { width: 100%; } }

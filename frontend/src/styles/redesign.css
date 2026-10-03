@@ -1,0 +1,74 @@
+/* Shared visual layer for existing screens. Feature behavior stays in its page. */
+#root { min-width:0; }
+body { background-color:var(--bg-base); background-image:radial-gradient(ellipse at 8% 0%,rgba(124,58,237,.09),transparent 45%),radial-gradient(ellipse at 95% 15%,rgba(6,182,212,.055),transparent 45%); }
+button,input,select,textarea,a { -webkit-tap-highlight-color:transparent; }
+:focus-visible { outline:3px solid var(--focus-color) !important; outline-offset:4px; }
+button:disabled,.sf-btn[aria-disabled="true"] { opacity:.5; cursor:not-allowed; transform:none; box-shadow:none; }
+#root .sf-btn { min-height:44px; line-height:1.4; border-radius:10px; letter-spacing:.005em; }
+#root .sf-btn--primary { background:#7C3AED; color:#F8FAFC; border-color:rgba(255,255,255,.08); }
+#root .sf-btn--primary:hover:not(:disabled) { background:#6D28D9; }
+#root .sf-btn--danger { background:#9F1239; color:#fff; border-color:#F43F5E; }
+#root .sf-btn--sm { font-size:.78rem; padding:8px 12px; }
+#root .sf-card { background-color:var(--bg-surface); border-color:var(--border-default); box-shadow:0 4px 24px rgba(0,0,0,.06); }
+#root .sf-card--glass { background:linear-gradient(135deg,var(--glass-start),var(--glass-end)); }
+#root .sf-badge { line-height:1.5; }
+#root .sf-badge--red { color:var(--error-text); }
+#root .sf-badge--teal { color:var(--success-text); background:rgba(16,185,129,.1); border-color:rgba(16,185,129,.25); }
+#root .sf-nav { border-bottom:1px solid var(--border-default); background:var(--nav-background); backdrop-filter:blur(12px); }
+#root .sf-nav__brand { font-weight:700; letter-spacing:-.03em; }
+#root .sf-nav__mark { background:var(--accent-blue); color:white; border-radius:9px; width:34px; height:34px; }
+#root .sf-nav__links { gap:24px; }
+#root .sf-nav__link { font-size:.8rem; }
+#root .sf-nav__link.active { color:var(--text-primary); }
+#root .sf-nav__toggle { min-width:44px; min-height:44px; align-items:center; justify-content:center; }
+#root .hero { position:relative; padding:96px 0 76px; }
+#root .hero__grid { gap:56px; }
+.hero__eyebrow { display:inline-flex; align-items:center; gap:9px; color:var(--accent-blue-strong); border:1px solid rgba(124,58,237,.3); background:var(--accent-blue-wash); border-radius:99px; padding:7px 12px; font-size:.65rem; letter-spacing:.12em; font-weight:600; margin-bottom:26px; }
+#root .hero__headline { font-size:clamp(2.8rem,5.5vw,4.7rem); line-height:1.04; letter-spacing:-.06em; font-weight:600; }
+#root .hero__sub { font-size:1rem; line-height:1.8; max-width:49ch; }
+#root .hero__meta { gap:28px; margin-top:40px; }
+#root .hero__meta-value { font-size:1.5rem; }
+#root .hero__visual-card { position:relative; padding:28px; border-radius:26px; border-color:rgba(124,58,237,.4); background:linear-gradient(145deg,var(--bg-surface-raised),var(--bg-surface)); box-shadow:0 24px 80px rgba(0,0,0,.25),0 0 70px rgba(124,58,237,.07); }
+#root .hero__visual-card::before { content:""; display:block; height:3px; position:absolute; top:0; left:24px; right:24px; border-radius:99px; background:var(--primary-gradient); }
+#root .section-head h2 { font-size:clamp(1.7rem,3vw,2.5rem); letter-spacing:-.04em; }
+#root .mini-card { background:var(--bg-surface-raised); border-color:var(--border-default); border-radius:18px; }
+#root .public-card,#root .platform-step,#root .pricing-card { background:var(--bg-surface); border-color:var(--border-default); border-radius:20px; }
+#root .pricing-card--highlighted { border-color:var(--accent-blue); background:linear-gradient(150deg,rgba(124,58,237,.13),var(--bg-surface) 60%); }
+#root .pricing-card__flag { background:var(--accent-blue); color:white; }
+#root .public-page__hero h1,#root .platform-hero h1,#root .pricing__head h1 { letter-spacing:-.045em; }
+#root .sf-auth { background:radial-gradient(ellipse at 50% 0%,rgba(124,58,237,.16),transparent 65%),var(--bg-base); min-height:100dvh; }
+#root .sf-auth__panel { background:var(--bg-surface); border:1px solid var(--border-default); border-radius:24px; padding:36px; box-shadow:0 30px 100px rgba(0,0,0,.18); }
+#root .sf-auth-form__header h1 { letter-spacing:-.04em; }
+#root .sf-auth-form__field input,#root .sf-auth-form__field select { min-height:46px; background:var(--bg-inset); border-color:var(--border-strong); }
+#root .sf-auth-form__alert { color:var(--error-text); }
+#root .sf-onboarding__card { background:var(--bg-surface); border-color:var(--border-default); }
+#root .sf-dashboard,#root .sf-careers,#root .sf-career-detail,#root .sf-skillanalysis,#root .sf-roadmap,#root .sf-projects,#root .sf-project-detail,#root .sf-missions,#root .sf-challenges,#root .sf-challenge-detail,#root .sf-progress,#root .sf-portfolio { padding:40px 32px 72px; }
+#root .sf-dashboard__header h1,#root .sf-roadmap h1,#root .sf-projects h1,#root .sf-challenges h1,#root .sf-progress h1,#root .sf-portfolio h1,#root .sf-careers h1 { letter-spacing:-.04em; }
+.sf-dashboard-welcome { display:flex; justify-content:space-between; align-items:center; gap:32px; padding:32px; margin-bottom:30px; border:1px solid rgba(124,58,237,.35); border-radius:22px; background:linear-gradient(110deg,rgba(124,58,237,.16),rgba(6,182,212,.04)); }
+.sf-dashboard-welcome h2 { font-size:clamp(1.5rem,2.5vw,2rem); margin:14px 0; letter-spacing:-.035em; }
+.sf-dashboard-welcome p { color:var(--text-secondary); font-size:.9rem; max-width:50ch; margin-bottom:24px; }
+.sf-dashboard-welcome__art { display:grid; justify-items:center; gap:20px; padding:24px; min-width:180px; color:var(--accent-blue-strong); }
+.sf-dashboard-welcome__art svg { transform:rotate(-12deg); stroke-width:1; filter:drop-shadow(0 10px 20px rgba(124,58,237,.3)); }
+.sf-dashboard-welcome__art span { font-size:.7rem; letter-spacing:.1em; }
+#root .sf-dashboard__grid { grid-template-columns:minmax(0,1fr) minmax(250px,340px); width:100%; }
+#root .sf-barrow__name { display:flex; align-items:center; gap:12px; }
+#root .sf-barrow__name .sf-skill-icon { width:34px; height:34px; border-radius:10px; }
+.sf-skill-icon { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; width:48px; height:48px; border-radius:14px; color:var(--category-color); background:color-mix(in srgb,var(--category-color) 12%,transparent); border:1px solid color-mix(in srgb,var(--category-color) 18%,transparent); }
+.sf-settings-security { display:flex; align-items:center; gap:20px; margin-top:24px; flex-wrap:wrap; }
+.sf-settings-security>svg { color:var(--accent-teal); }
+.sf-settings-security>div { flex:1; }
+.sf-settings-security h2 { font-size:1rem; margin-bottom:6px; }
+.sf-settings-security p { color:var(--text-secondary); font-size:.8rem; }
+.sf-dialog__message { color:var(--text-secondary); line-height:1.7; }
+.sf-field__error { color:var(--error-text); }
+#root .sf-footer { background:var(--bg-surface); border-top:1px solid var(--border-default); }
+@media(max-width:1100px) { #root .sf-nav__links { gap:14px; } #root .sf-nav__inner { gap:18px; } }
+@media(max-width:900px) { #root .sf-dashboard__grid { grid-template-columns:1fr; } #root .hero { padding-top:56px; } #root .hero__grid { gap:40px; } }
+@media(max-width:640px) {
+  #root .sf-dashboard,#root .sf-careers,#root .sf-career-detail,#root .sf-skillanalysis,#root .sf-roadmap,#root .sf-projects,#root .sf-project-detail,#root .sf-missions,#root .sf-challenges,#root .sf-challenge-detail,#root .sf-progress,#root .sf-portfolio { padding:28px 16px 48px; }
+  .sf-dashboard-welcome { padding:24px; } .sf-dashboard-welcome__art { display:none; }
+  #root .sf-auth__panel { padding:26px 22px; } #root .hero__meta { gap:20px; } #root .hero__meta-label { font-size:.68rem; }
+  #root .hero__visual-card { padding:18px; } #root .hero__actions>.sf-btn { flex:1; }
+  #root .sf-card--padded { padding:22px; } #root .sf-portfolio__header { flex-wrap:wrap; }
+}
+@media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; } }

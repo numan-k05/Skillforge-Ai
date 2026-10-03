@@ -1,0 +1,10 @@
+import { Router } from "express";import { requireAuth,requireRole } from "../middleware/authMiddleware.js";import { validate,validateParams,validateQuery } from "../middleware/validate.js";import { positiveIdParamSchema,projectEvidenceSchema,projectReviewDecisionSchema,submissionQueueQuerySchema } from "../utils/validation.js";import * as c from "../controllers/projectSubmissionController.js";
+const router=Router();const reviewer=[requireAuth,requireRole("content_admin","admin")];
+router.get("/mine",requireAuth,c.mine);router.get("/mine/:id",requireAuth,validateParams(positiveIdParamSchema),c.mineDetail);
+router.post("/projects/:id/draft",requireAuth,validateParams(positiveIdParamSchema),validate(projectEvidenceSchema),c.saveDraft);
+router.post("/:id/submit",requireAuth,validateParams(positiveIdParamSchema),c.submit);
+router.get("/review/queue",...reviewer,validateQuery(submissionQueueQuerySchema),c.queue);
+router.get("/review/:id",...reviewer,validateParams(positiveIdParamSchema),c.reviewerDetail);
+router.post("/review/:id/claim",...reviewer,validateParams(positiveIdParamSchema),c.claim);
+router.post("/review/:id/decision",...reviewer,validateParams(positiveIdParamSchema),validate(projectReviewDecisionSchema),c.decide);
+export default router;

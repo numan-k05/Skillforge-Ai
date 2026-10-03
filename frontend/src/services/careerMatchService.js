@@ -1,0 +1,1 @@
+import{apiRequest}from"./apiClient.js";export const getCareerMatches=({page=1,limit=12,categoryId}={})=>{const q=new URLSearchParams({page:String(page),limit:String(limit)});if(categoryId)q.set("categoryId",String(categoryId));return apiRequest(`/career-match?${q}`,{auth:true});};export default{getCareerMatches};

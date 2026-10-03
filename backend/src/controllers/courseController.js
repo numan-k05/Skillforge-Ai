@@ -1,0 +1,20 @@
+import { asyncHandler } from "../utils/asyncHandler.js";
+import * as service from "../services/courseService.js";
+
+export const listCourses = asyncHandler(async(req,res)=>res.json(await service.listCourses(req.validatedQuery,req.user?.id||null)));
+export const getCourse = asyncHandler(async(req,res)=>res.json(await service.getCourseDetail(req.params.id,req.user?.id||null)));
+export const getMyCourses = asyncHandler(async(req,res)=>res.json(await service.getMyCourses(req.user.id)));
+export const startCourse = asyncHandler(async(req,res)=>res.status(201).json(await service.startCourse(req.user.id,req.params.id)));
+export const focusCourse = asyncHandler(async(req,res)=>res.json(await service.focusCourse(req.user.id,req.params.id)));
+export const completeLesson = asyncHandler(async(req,res)=>res.json(await service.completeLesson(req.user.id,req.params.id)));
+export const adminGetCourse = asyncHandler(async(req,res)=>res.json(await service.getCourseDetail(req.params.id,req.user.id,true)));
+export const adminListCourses = asyncHandler(async(req,res)=>res.json(await service.listAdminCourses(req.validatedQuery)));
+export const adminCreateCourse = asyncHandler(async(req,res)=>res.status(201).json(await service.createCourse(req.user.id,req.validated)));
+export const adminUpdateCourse = asyncHandler(async(req,res)=>res.json(await service.updateCourse(req.user.id,req.params.id,req.validated)));
+export const adminAddModule = asyncHandler(async(req,res)=>res.status(201).json(await service.addModule(req.user.id,req.params.id,req.validated)));
+export const adminAddLesson = asyncHandler(async(req,res)=>res.status(201).json(await service.addLesson(req.user.id,req.params.id,req.validated)));
+export const adminUpdateModule = asyncHandler(async(req,res)=>res.json(await service.updateModule(req.user.id,req.params.id,req.validated)));
+export const adminDeleteModule = asyncHandler(async(req,res)=>{await service.deleteModule(req.user.id,req.params.id);res.status(204).end();});
+export const adminUpdateLesson = asyncHandler(async(req,res)=>res.json(await service.updateLesson(req.user.id,req.params.id,req.validated)));
+export const adminDeleteLesson = asyncHandler(async(req,res)=>{await service.deleteLesson(req.user.id,req.params.id);res.status(204).end();});
+export const adminSetPrerequisites = asyncHandler(async(req,res)=>res.json(await service.setPrerequisites(req.user.id,req.params.id,req.validated.courseIds)));

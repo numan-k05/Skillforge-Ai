@@ -1,0 +1,144 @@
+.sf-skillanalysis {
+  padding: var(--space-8) 0 var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.sf-skillanalysis__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.sf-skillanalysis__eyebrow {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-1);
+}
+
+.sf-skillanalysis__header h1 {
+  font-size: var(--text-2xl);
+}
+
+.sf-skillanalysis__subtitle {
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+  max-width: 56ch;
+}
+
+.sf-skillanalysis__goal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5);
+  min-width: 220px;
+}
+
+.sf-skillanalysis__goal-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sf-skillanalysis__goal-value {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--accent-blue-strong);
+}
+
+.sf-skillanalysis__toolbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sf-skillanalysis__disclaimer {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--space-5);
+}
+
+.sf-skillanalysis__unsupported h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+.sf-skillanalysis__unsupported p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+}
+
+.sf-skillanalysis__unsupported-lead {
+  font-size: var(--text-sm);
+  color: var(--text-muted) !important;
+}
+
+.sf-skillanalysis__unsupported-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.sf-skillanalysis__unsupported-list li {
+  font-size: var(--text-sm);
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.8rem;
+  color: var(--text-secondary);
+}
+
+.sf-skillanalysis__unsupported-link {
+  color: var(--accent-blue-strong);
+  font-size: var(--text-sm);
+}
+
+/* Shared section heading used by every skill-analysis subsection */
+.sf-section__title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+
+.sf-spin {
+  animation: sf-toolbar-spin 1s linear infinite;
+}
+
+@keyframes sf-toolbar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-spin {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sf-skillanalysis__header {
+    flex-direction: column;
+  }
+  .sf-skillanalysis__goal {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sf-skillanalysis__toolbar {
+    justify-content: stretch;
+  }
+  .sf-skillanalysis__toolbar .sf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

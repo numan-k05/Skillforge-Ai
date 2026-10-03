@@ -1,0 +1,17 @@
+import { Router } from "express"; import rateLimit from "express-rate-limit"; import { optionalAuth,requireAuth,requireRole } from "../middleware/authMiddleware.js"; import { validate,validateParams,validateQuery } from "../middleware/validate.js"; import { positiveIdParamSchema,quizCreateSchema,quizFiltersSchema,quizQuestionSchema,quizSubmissionSchema } from "../utils/validation.js"; import * as c from "../controllers/assessmentController.js";
+const router=Router(); const admin=[requireAuth,requireRole("content_admin","admin")];
+const assessmentGenerationLimiter=rateLimit({windowMs:60*60*1000,max:30,keyGenerator:req=>String(req.user.id),standardHeaders:true,legacyHeaders:false,message:{error:{message:"Too many assessment starts. Please try again later."}}});
+router.get("/",optionalAuth,validateQuery(quizFiltersSchema),c.list); router.get("/history",requireAuth,c.history);
+router.post("/admin/quizzes",...admin,validate(quizCreateSchema),c.adminCreate);
+router.get("/admin/quizzes",...admin,c.adminList);
+router.get("/admin/quizzes/:id",...admin,validateParams(positiveIdParamSchema),c.adminDetail);
+router.post("/admin/quizzes/:id/questions",...admin,validateParams(positiveIdParamSchema),validate(quizQuestionSchema),c.adminQuestion);
+router.put("/admin/questions/:id",...admin,validateParams(positiveIdParamSchema),validate(quizQuestionSchema),c.adminReplaceQuestion);
+router.delete("/admin/questions/:id",...admin,validateParams(positiveIdParamSchema),c.adminDeleteQuestion);
+router.post("/admin/quizzes/:id/publish",...admin,validateParams(positiveIdParamSchema),c.adminPublish);
+router.post("/admin/quizzes/:id/new-version",...admin,validateParams(positiveIdParamSchema),c.adminNewVersion);
+router.get("/attempts/:id",requireAuth,validateParams(positiveIdParamSchema),c.attempt);
+router.post("/attempts/:id/submit",requireAuth,validateParams(positiveIdParamSchema),validate(quizSubmissionSchema),c.submit);
+router.post("/:id/attempts",requireAuth,assessmentGenerationLimiter,validateParams(positiveIdParamSchema),c.start);
+router.get("/:id",validateParams(positiveIdParamSchema),(req,res,next)=>{if(!req.headers.authorization)return c.detail(req,res,next);return requireAuth(req,res,error=>error?next(error):c.detail(req,res,next));});
+export default router;

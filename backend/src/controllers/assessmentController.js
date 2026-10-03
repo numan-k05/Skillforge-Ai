@@ -1,0 +1,16 @@
+import { asyncHandler } from "../utils/asyncHandler.js";
+import * as service from "../services/assessmentService.js";
+export const list=asyncHandler(async(req,res)=>res.json(await service.listQuizzes(req.validatedQuery,req.user?.id||null)));
+export const detail=asyncHandler(async(req,res)=>res.json(await service.getQuiz(req.params.id,req.user?.id||null)));
+export const start=asyncHandler(async(req,res)=>res.status(201).json(await service.startAttempt(req.user.id,req.params.id)));
+export const attempt=asyncHandler(async(req,res)=>res.json(await service.getAttempt(req.user.id,req.params.id)));
+export const submit=asyncHandler(async(req,res)=>res.json(await service.submitAttempt(req.user.id,req.params.id,req.validated.answers)));
+export const history=asyncHandler(async(req,res)=>res.json(await service.history(req.user.id)));
+export const adminCreate=asyncHandler(async(req,res)=>res.status(201).json(await service.createQuiz(req.user.id,req.validated)));
+export const adminList=asyncHandler(async(req,res)=>res.json(await service.adminList()));
+export const adminDetail=asyncHandler(async(req,res)=>res.json(await service.adminDetail(req.params.id)));
+export const adminQuestion=asyncHandler(async(req,res)=>res.status(201).json(await service.addQuestion(req.user.id,req.params.id,req.validated)));
+export const adminReplaceQuestion=asyncHandler(async(req,res)=>res.json(await service.replaceQuestion(req.user.id,req.params.id,req.validated)));
+export const adminDeleteQuestion=asyncHandler(async(req,res)=>{await service.deleteQuestion(req.user.id,req.params.id);res.status(204).end();});
+export const adminPublish=asyncHandler(async(req,res)=>res.json(await service.publish(req.user.id,req.params.id)));
+export const adminNewVersion=asyncHandler(async(req,res)=>res.status(201).json(await service.newVersion(req.user.id,req.params.id)));

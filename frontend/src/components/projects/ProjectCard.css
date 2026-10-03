@@ -1,0 +1,13 @@
+.sf-project-card { display:flex; flex-direction:column; gap:var(--space-3); padding:var(--space-5); background:var(--bg-surface); border:1px solid var(--border-default); border-radius:var(--radius-lg); min-height:300px; transition:transform var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
+.sf-project-card:hover { transform:translateY(-3px); border-color:var(--border-strong); box-shadow:var(--shadow-md); }
+.sf-project-card__top { display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); }
+.sf-project-card__icon { width:40px; height:40px; display:grid; place-items:center; border-radius:var(--radius-md); background:var(--accent-blue-wash); color:var(--accent-blue-strong); }
+.sf-project-card__badges { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:var(--space-2); }
+.sf-project-card h3 { font-size:var(--text-lg); margin-top:var(--space-2); }
+.sf-project-card p { color:var(--text-secondary); line-height:var(--leading-snug); flex:1; }
+.sf-project-card__reason { display:flex; gap:var(--space-2); align-items:flex-start; color:var(--accent-teal); background:var(--accent-teal-wash); border-radius:var(--radius-sm); padding:var(--space-2) var(--space-3); font-size:var(--text-xs); }
+.sf-project-card__meta { display:flex; justify-content:space-between; align-items:center; color:var(--text-muted); font-size:var(--text-sm); }
+.sf-project-card__meta span { display:flex; align-items:center; gap:var(--space-2); }
+.sf-project-card__skills { display:flex; flex-wrap:wrap; gap:var(--space-2); }
+.sf-project-card__skills span { font-family:var(--font-mono); font-size:11px; color:var(--text-secondary); background:var(--bg-inset); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); padding:4px 7px; }
+.sf-project-card__link { display:flex; justify-content:center; align-items:center; gap:var(--space-2); border-top:1px solid var(--border-subtle); padding-top:var(--space-3); color:var(--accent-blue-strong); font-weight:600; font-size:var(--text-sm); }

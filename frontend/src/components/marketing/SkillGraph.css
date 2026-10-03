@@ -1,0 +1,43 @@
+.skill-graph {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.skill-graph__label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  fill: var(--text-muted);
+}
+
+.skill-graph__node--active .skill-graph__label,
+.skill-graph__node--next .skill-graph__label {
+  fill: var(--text-secondary);
+}
+
+.skill-graph__pulse {
+  fill: none;
+  stroke: var(--accent-blue-strong);
+  stroke-width: 1.4;
+  opacity: 0.6;
+  animation: sf-pulse 2.4s var(--ease-out) infinite;
+  transform-origin: center;
+}
+
+@keyframes sf-pulse {
+  0% {
+    r: 12;
+    opacity: 0.55;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-graph__pulse {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,1 @@
+import{Router}from"express";import{requireAuth}from"../middleware/authMiddleware.js";import{validateQuery}from"../middleware/validate.js";import{careerMatchQuerySchema}from"../utils/validation.js";import{list}from"../controllers/careerMatchController.js";const router=Router();router.get("/",requireAuth,validateQuery(careerMatchQuerySchema),list);export default router;

@@ -1,0 +1,110 @@
+.sf-careerdetail {
+  padding: var(--space-8) 0 var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.sf-careerdetail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  width: fit-content;
+}
+
+.sf-careerdetail__back:hover {
+  color: var(--text-primary);
+}
+
+.sf-careerdetail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.sf-careerdetail__header h1 {
+  font-size: var(--text-2xl);
+  margin-top: var(--space-3);
+}
+
+.sf-careerdetail__desc {
+  color: var(--text-secondary);
+  margin-top: var(--space-3);
+  max-width: 60ch;
+  line-height: var(--leading-normal);
+}
+
+.sf-careerdetail__goalcard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 260px;
+  max-width: 340px;
+}
+
+.sf-careerdetail__goalcard-label {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sf-careerdetail__goalcard-value {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--accent-blue-strong);
+}
+
+.sf-careerdetail__goalcard-current {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.sf-careerdetail__goalcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.sf-careerdetail__goalcard-success {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--accent-teal);
+  font-size: var(--text-sm);
+}
+
+.sf-careerdetail__goalcard-error {
+  color: var(--accent-red);
+  font-size: var(--text-sm);
+}
+
+.sf-careerdetail__reqgroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-7);
+}
+
+.sf-careerdetail__nogaps {
+  color: var(--text-secondary);
+}
+
+/* Shared section heading, matches the pattern used across skill-analysis */
+.sf-section__title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .sf-careerdetail__header {
+    flex-direction: column;
+  }
+  .sf-careerdetail__goalcard {
+    max-width: none;
+    width: 100%;
+  }
+}

@@ -1,0 +1,35 @@
+.sf-careerstatus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-9) var(--space-6);
+  color: var(--text-secondary);
+}
+
+.sf-careerstatus svg {
+  color: var(--text-muted);
+}
+
+.sf-careerstatus--error svg {
+  color: var(--accent-red);
+}
+
+.sf-careerstatus__spinner {
+  animation: sf-careerstatus-spin 1s linear infinite;
+  color: var(--accent-blue);
+}
+
+@keyframes sf-careerstatus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-careerstatus__spinner {
+    animation: none;
+  }
+}

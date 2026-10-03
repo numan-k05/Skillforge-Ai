@@ -1,0 +1,10 @@
+import { useEffect } from "react";
+import { Compass, BrainCircuit, Map, Rocket, ArrowRight, Sparkles } from "lucide-react";
+import Button from "../../components/ui/Button.jsx";
+import { setPageMeta } from "../../utils/seo.js";
+import "./PublicMarketingPage.css";
+const steps=[[Compass,"Choose a career direction","Select a direction and give the platform context about where you want to grow."],[BrainCircuit,"Analyze your skills","Compare your current skills with the requirements that matter for your target path."],[Map,"Build your roadmap","Turn priorities into structured phases, projects, challenges, and daily work."],[Rocket,"Learn and adapt","Complete focused work, track progress, and refine your plan as you grow."]];
+export default function HowItWorksPage(){
+ useEffect(()=>setPageMeta({title:"How it works",description:"See how SkillForge AI turns a career direction and skill analysis into a practical, connected learning journey."}),[]);
+ return <section className="public-page"><div className="container"><header className="public-page__hero"><span className="public-page__eyebrow"><Sparkles size={16}/> A simple workflow</span><h1>From career direction to your next useful action.</h1><p>SkillForge is designed as a connected sequence. You do not have to guess which learning task should come next.</p><div className="public-page__actions"><Button variant="primary" size="lg" to="/signup">Start free <ArrowRight size={18}/></Button></div></header><div className="public-grid">{steps.map(([Icon,title,text],i)=><article className="public-card" key={title}><span className="public-card__icon"><Icon size={23}/></span><h2>0{i+1}. {title}</h2><p>{text}</p></article>)}</div><section className="public-section"><h2>The plan is practical, not just descriptive.</h2><p>Analysis becomes a roadmap. A roadmap becomes projects, challenges, and daily missions. Completed work becomes progress you can review.</p></section></div></section>;
+}

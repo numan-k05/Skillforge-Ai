@@ -1,0 +1,173 @@
+/* SkillForge design system. Brand colors are kept separate from readable text tints. */
+
+:root {
+  color-scheme: dark;
+  --primary-gradient: linear-gradient(135deg, #7C3AED, #06B6D4);
+  --success: #10B981;
+  --success-text: #6EE7B7;
+  --error-text: #FDA4AF;
+  --bg-raised: var(--bg-surface-raised);
+  --focus-color: #67E8F9;
+  /* ---- Color: surfaces ---- */
+  --bg-base: #07111F;
+  --bg-surface: #101D2F;
+  --bg-surface-raised: #17263B;
+  --bg-surface-hover: #20334D;
+  --bg-inset: #0B1728;
+
+  /* ---- Color: borders ---- */
+  --border-subtle: #26364D;
+  --border-default: #26364D;
+  --border-strong: #526782;
+
+  /* ---- Color: text ---- */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #94A3B8;
+  --text-disabled: #7F8DA3;
+
+  /* ---- Color: brand / accent ---- */
+  --accent-blue: #7C3AED;
+  --accent-blue-strong: #C4B5FD;
+  --accent-blue-dim: #302052;
+  --accent-blue-wash: rgba(124, 58, 237, 0.14);
+
+  --accent-teal: #06B6D4;
+  --accent-teal-dim: #103B49;
+  --accent-teal-wash: rgba(6, 182, 212, 0.12);
+
+  --accent-amber: #F59E0B;
+  --accent-amber-dim: #403019;
+  --accent-amber-wash: rgba(245, 158, 11, 0.12);
+
+  --accent-red: #F43F5E;
+  --accent-red-dim: #421D2F;
+  --accent-red-wash: rgba(244, 63, 94, 0.12);
+
+  /* ---- Shared translucent surfaces and legacy aliases ---- */
+  --nav-background: rgba(7, 17, 31, 0.94);
+  --nav-background-transparent: rgba(7, 17, 31, 0);
+  --glass-start: rgba(23, 38, 59, 0.95);
+  --glass-end: rgba(16, 29, 47, 0.95);
+  --glass-border: rgba(38, 54, 77, 0.5);
+  --surface: var(--bg-surface);
+  --border: var(--border-default);
+  --accent: var(--accent-blue-strong);
+  --sf-bg: var(--bg-base);
+  --sf-surface: var(--bg-surface);
+  --sf-surface-2: var(--bg-surface-raised);
+  --sf-card: var(--bg-surface);
+  --sf-text: var(--text-primary);
+  --sf-text-muted: var(--text-secondary);
+  --sf-muted: var(--text-muted);
+  --sf-border: var(--border-default);
+  --sf-primary: var(--accent-blue);
+  --sf-accent: var(--accent-blue-strong);
+  --sf-accent-soft: var(--accent-blue-wash);
+  --sf-success: var(--success);
+
+  /* ---- Type ---- */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: 3rem;
+  --text-4xl: 3.875rem;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+
+  /* ---- Space ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 6rem;
+  --space-11: 8rem;
+
+  /* ---- Radius: deliberately varied by hierarchy, not uniform ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.45);
+  --shadow-glow-blue: 0 0 0 1px rgba(124,58,237,.35), 0 8px 30px rgba(124,58,237,.16);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+
+  /* ---- Layout ---- */
+  --content-max: 1180px;
+  --sidebar-width: 244px;
+  --topbar-height: 76px;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --success: #047857;
+  --success-text: #047857;
+  --error-text: #BE123C;
+  --focus-color: #6D28D9;
+
+  --bg-base: #F5F7FB;
+  --bg-surface: #FFFFFF;
+  --bg-surface-raised: #EEF2F7;
+  --bg-surface-hover: #E2E8F0;
+  --bg-inset: #F8FAFC;
+
+  --border-subtle: #DCE3EC;
+  --border-default: #CBD5E1;
+  --border-strong: #94A3B8;
+
+  --text-primary: #172033;
+  --text-secondary: #475569;
+  --text-muted: #526176;
+  --text-disabled: #718096;
+
+  --accent-blue: #6D28D9;
+  --accent-blue-strong: #5B21B6;
+  --accent-blue-dim: #EDE9FE;
+  --accent-blue-wash: rgba(109, 40, 217, 0.10);
+
+  --accent-teal: #087D8E;
+  --accent-teal-dim: #CFFAFE;
+  --accent-teal-wash: rgba(8, 125, 142, 0.10);
+
+  --accent-amber: #B45309;
+  --accent-amber-dim: #FEF3C7;
+  --accent-amber-wash: rgba(180, 83, 9, 0.10);
+
+  --accent-red: #BE123C;
+  --accent-red-dim: #FFE4E6;
+  --accent-red-wash: rgba(190, 18, 60, 0.09);
+
+  --nav-background: rgba(245, 247, 251, 0.94);
+  --nav-background-transparent: rgba(245, 247, 251, 0);
+  --glass-start: rgba(255, 255, 255, 0.96);
+  --glass-end: rgba(238, 242, 247, 0.96);
+  --glass-border: rgba(148, 163, 184, 0.45);
+
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 20px 48px rgba(15, 23, 42, 0.16);
+  --shadow-glow-blue: 0 0 0 1px rgba(109, 40, 217, 0.22), 0 8px 30px rgba(109, 40, 217, 0.12);
+}

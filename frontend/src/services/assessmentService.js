@@ -1,0 +1,13 @@
+import { apiRequest } from "./apiClient.js";
+export const getQuizzes=(filters={})=>{const q=new URLSearchParams(Object.entries(filters).filter(([,v])=>v!=null&&v!==""));return apiRequest(`/assessments${q.size?`?${q}`:""}`,{auth:true});};
+export const getQuiz=(id)=>apiRequest(`/assessments/${id}`,{auth:true});
+export const startAttempt=(quizId)=>apiRequest(`/assessments/${quizId}/attempts`,{method:"POST",auth:true});
+export const getAttempt=(id)=>apiRequest(`/assessments/attempts/${id}`,{auth:true});
+export const submitAttempt=(id,answers)=>apiRequest(`/assessments/attempts/${id}/submit`,{method:"POST",body:{answers},auth:true});
+export const getAssessmentHistory=()=>apiRequest("/assessments/history",{auth:true});
+export const createQuiz=(body)=>apiRequest("/assessments/admin/quizzes",{method:"POST",body,auth:true});
+export const addQuizQuestion=(quizId,body)=>apiRequest(`/assessments/admin/quizzes/${quizId}/questions`,{method:"POST",body,auth:true});
+export const publishQuiz=(quizId)=>apiRequest(`/assessments/admin/quizzes/${quizId}/publish`,{method:"POST",auth:true});
+export const getAdminQuizzes=()=>apiRequest("/assessments/admin/quizzes",{auth:true});
+export const getAdminQuiz=(quizId)=>apiRequest(`/assessments/admin/quizzes/${quizId}`,{auth:true});
+export const createQuizVersion=(quizId)=>apiRequest(`/assessments/admin/quizzes/${quizId}/new-version`,{method:"POST",auth:true});

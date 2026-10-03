@@ -1,0 +1,19 @@
+.sf-roadmap-item {
+  display: grid; grid-template-columns: 44px 1fr; gap: var(--space-4); padding: var(--space-4);
+  background: var(--bg-inset); border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.sf-roadmap-item:hover { border-color: var(--border-default); background: var(--bg-surface-raised); }
+.sf-roadmap-item--completed { opacity: .78; }
+.sf-roadmap-item__icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--radius-md); }
+.sf-roadmap-item__icon--learning { color: var(--accent-blue-strong); background: var(--accent-blue-wash); }
+.sf-roadmap-item__icon--practice { color: var(--accent-teal); background: var(--accent-teal-wash); }
+.sf-roadmap-item__icon--project { color: var(--accent-amber); background: var(--accent-amber-wash); }
+.sf-roadmap-item__icon--assessment { color: var(--text-secondary); background: var(--bg-surface-raised); }
+.sf-roadmap-item__badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2); }
+.sf-roadmap-item__status { display: inline-flex; align-items: center; gap: .3rem; color: var(--text-muted); font-size: var(--text-xs); text-transform: capitalize; }
+.sf-roadmap-item h3 { margin-top: var(--space-2); font-size: var(--text-base); }
+.sf-roadmap-item--completed h3 { text-decoration: line-through; text-decoration-color: var(--text-muted); }
+.sf-roadmap-item p { color: var(--text-secondary); margin-top: var(--space-2); }
+.sf-roadmap-item__meta { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-3); color: var(--text-muted); font-size: var(--text-xs); }
+.sf-roadmap-item__meta span { display: inline-flex; align-items: center; gap: .35rem; }
+@media (max-width: 640px) { .sf-roadmap-item { grid-template-columns: 36px 1fr; gap: var(--space-3); padding: var(--space-3); } .sf-roadmap-item__icon { width: 36px; height: 36px; } }

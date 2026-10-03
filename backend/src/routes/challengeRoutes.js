@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { requireAuth } from "../middleware/authMiddleware.js";
+import { validate, validateParams, validateQuery } from "../middleware/validate.js";
+import { challengeSubmissionSchema, positiveIdParamSchema, challengeFiltersSchema, challengeRecommendationsSchema } from "../utils/validation.js";
+import { listChallengesController, getChallengeController, recommendedChallengesController, submitChallengeController } from "../controllers/challengeController.js";
+const router = Router();
+router.use(requireAuth);
+router.get("/", validateQuery(challengeFiltersSchema), listChallengesController);
+router.get("/recommended", validateQuery(challengeRecommendationsSchema), recommendedChallengesController);
+router.get("/:id", validateParams(positiveIdParamSchema), getChallengeController);
+router.post("/:id/submit", validateParams(positiveIdParamSchema), validate(challengeSubmissionSchema), submitChallengeController);
+export default router;

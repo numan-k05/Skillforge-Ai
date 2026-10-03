@@ -1,0 +1,70 @@
+name: Quality and production acceptance
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: skillforge
+          POSTGRES_PASSWORD: test-password
+          POSTGRES_DB: skillforge_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U skillforge -d skillforge_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://skillforge:test-password@127.0.0.1:5432/skillforge_test
+      JWT_SECRET: ci-only-secret-0123456789-abcdefghijklmnopqrstuvwxyz
+      JWT_EXPIRES_IN: 1h
+      CORS_ORIGIN: http://127.0.0.1:5188
+      PUBLIC_APP_URL: http://127.0.0.1:5188
+      SANDBOX_PAYMENT_WEBHOOK_SECRET: ci-sandbox-secret-0123456789
+      WALLET_ENCRYPTION_KEY: MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY=
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+      - name: Install backend
+        working-directory: backend
+        run: npm ci
+      - name: Apply clean database migrations
+        working-directory: backend
+        run: npm run db:setup
+      - name: Verify database invariants
+        working-directory: backend
+        run: npm run db:verify
+      - name: Backend syntax and tests
+        working-directory: backend
+        run: npm run check:syntax && npm test
+      - name: Install frontend
+        working-directory: frontend
+        run: npm ci
+      - name: Frontend lint, tests, and build
+        working-directory: frontend
+        run: npm run lint && npm test && npm run build
+      - name: Install Playwright Chromium
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - name: Responsive browser tests
+        working-directory: frontend
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-results
+          path: |
+            frontend/test-results
+            frontend/playwright-report
+          retention-days: 7

@@ -1,0 +1,126 @@
+.sf-readiness {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.sf-readiness__gauge-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sf-gauge {
+  position: relative;
+  width: 148px;
+  height: 148px;
+}
+
+.sf-gauge__svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.sf-gauge__track {
+  fill: none;
+  stroke: var(--bg-inset);
+  stroke-width: 12;
+}
+
+.sf-gauge__fill {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--duration-base) var(--ease-out);
+}
+
+.sf-gauge__fill--teal {
+  stroke: var(--accent-teal);
+}
+.sf-gauge__fill--amber {
+  stroke: var(--accent-amber);
+}
+.sf-gauge__fill--red {
+  stroke: var(--accent-red);
+}
+
+.sf-gauge__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sf-gauge__number {
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sf-gauge__caption {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sf-readiness__gauge-note {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 20ch;
+}
+
+.sf-readiness__stats {
+  flex: 1;
+  min-width: 260px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5) var(--space-6);
+}
+
+.sf-readiness__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sf-readiness__stat-value {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sf-readiness__stat-value--teal {
+  color: var(--accent-teal);
+}
+.sf-readiness__stat-value--amber {
+  color: var(--accent-amber);
+}
+.sf-readiness__stat-value--red {
+  color: var(--accent-red);
+}
+
+.sf-readiness__stat-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+@media (max-width: 560px) {
+  .sf-readiness {
+    justify-content: center;
+    text-align: center;
+  }
+  .sf-readiness__stats {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .sf-readiness__stat {
+    align-items: center;
+  }
+}

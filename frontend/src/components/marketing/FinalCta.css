@@ -1,0 +1,28 @@
+.final-cta {
+  padding: var(--space-10) 0 var(--space-11);
+}
+
+.final-cta__card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  background:
+    radial-gradient(560px circle at 15% 0%, rgba(124, 58, 237, 0.14), transparent 60%),
+    linear-gradient(180deg, var(--bg-surface-raised), var(--bg-surface));
+  padding: var(--space-9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+}
+
+.final-cta__card h2 {
+  font-size: var(--text-2xl);
+  max-width: 18ch;
+}
+
+.final-cta__card p {
+  margin-top: var(--space-3);
+  color: var(--text-secondary);
+  max-width: 42ch;
+}

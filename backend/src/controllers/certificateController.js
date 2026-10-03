@@ -1,0 +1,11 @@
+import { asyncHandler } from "../utils/asyncHandler.js";
+import * as service from "../services/certificateService.js";
+export const catalog=asyncHandler(async(req,res)=>res.json(await service.catalog(req.user.id)));
+export const mine=asyncHandler(async(req,res)=>res.json(await service.mine(req.user.id)));
+export const issue=asyncHandler(async(req,res)=>{const result=await service.issue(req.user.id,req.params.id);res.status(result.created?201:200).json(result);});
+export const verify=asyncHandler(async(req,res)=>res.json(await service.verify(req.params.code)));
+export const pdf=asyncHandler(async(req,res)=>{const result=await service.pdf(req.params.code);res.setHeader("Content-Type","application/pdf");res.setHeader("Content-Disposition",`attachment; filename="${result.filename}"`);res.send(result.buffer);});
+export const definitions=asyncHandler(async(req,res)=>res.json(await service.adminDefinitions()));
+export const createDefinition=asyncHandler(async(req,res)=>res.status(201).json(await service.createDefinition(req.user.id,req.validated)));
+export const updateDefinition=asyncHandler(async(req,res)=>res.json(await service.updateDefinition(req.user.id,req.params.id,req.validated)));
+export const revoke=asyncHandler(async(req,res)=>res.json(await service.revoke(req.params.id,req.user.id,req.validated.reason)));

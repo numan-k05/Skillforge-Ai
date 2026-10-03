@@ -1,0 +1,37 @@
+.sf-requirements__career {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--accent-blue-strong);
+  margin-bottom: var(--space-5);
+}
+
+.sf-requirements__groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-6);
+}
+
+.sf-requirements__group h3 {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sf-requirements__group ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.sf-requirements__group li {
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+}

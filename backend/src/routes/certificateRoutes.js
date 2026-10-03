@@ -1,0 +1,16 @@
+import { Router } from "express";
+import { requireAuth,requireRole } from "../middleware/authMiddleware.js";
+import { validate,validateParams } from "../middleware/validate.js";
+import { certificateCodeParamSchema,certificateDefinitionSchema,certificateRevocationSchema,positiveIdParamSchema } from "../utils/validation.js";
+import * as c from "../controllers/certificateController.js";
+const router=Router();const admin=[requireAuth,requireRole("content_admin","admin")];
+router.get("/verify/:code/pdf",validateParams(certificateCodeParamSchema),c.pdf);
+router.get("/verify/:code",validateParams(certificateCodeParamSchema),c.verify);
+router.get("/admin/definitions",...admin,c.definitions);
+router.post("/admin/definitions",...admin,validate(certificateDefinitionSchema),c.createDefinition);
+router.put("/admin/definitions/:id",...admin,validateParams(positiveIdParamSchema),validate(certificateDefinitionSchema),c.updateDefinition);
+router.post("/admin/:id/revoke",...admin,validateParams(positiveIdParamSchema),validate(certificateRevocationSchema),c.revoke);
+router.get("/catalog",requireAuth,c.catalog);
+router.get("/mine",requireAuth,c.mine);
+router.post("/:id/issue",requireAuth,validateParams(positiveIdParamSchema),c.issue);
+export default router;

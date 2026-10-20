@@ -3,6 +3,7 @@ import RouteErrorBoundary from "./components/ui/RouteErrorBoundary.jsx";
 import { RouteLoading } from "./components/ui/Feedback.jsx";
 import { Routes, Route } from "react-router-dom";
 import MarketingLayout from "./layouts/MarketingLayout.jsx";
+import VisualMotion from "./components/VisualMotion.jsx";
 import AuthLayout from "./layouts/AuthLayout.jsx";
 const LandingPage = lazy(() => import("./pages/marketing/LandingPage.jsx"));
 const PricingPage = lazy(() => import("./pages/marketing/PricingPage.jsx"));
@@ -71,6 +72,7 @@ function App() {
   return (
     <>
       <ScrollToHash />
+      <VisualMotion />
       <SeoManager />
       <RouteErrorBoundary><Suspense fallback={<RouteLoading />}><Routes>
       <Route path="/skills" element={<SkillsPage />} />

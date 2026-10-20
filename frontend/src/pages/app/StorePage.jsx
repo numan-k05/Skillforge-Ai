@@ -1,5 +1,5 @@
+import StatementHero from "../../components/marketing/StatementHero.jsx";
 import { useCallback } from "react";
-import { ShoppingBag } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import CatalogLayout from "../../layouts/CatalogLayout.jsx";
 import useRemoteData from "../../hooks/useRemoteData.js";
@@ -20,7 +20,7 @@ export default function StorePage() {
   const {data,error,loading,reload}=useRemoteData(fetcher);
   const products=(data||[]).filter(p=>productId?String(p.id)===productId:p.kind===type&&(!skillId||p.skills.some(s=>String(s.id)===skillId)));
   return <CatalogLayout>
-    <header className="sf-page-heading"><div><span className="sf-eyebrow"><ShoppingBag size={16}/> CHOOSE YOUR LEARNING ACCESS</span><h1>What would you like to learn?</h1><p>Choose one skill for a focused course, or one career bundle for several related courses. Your purchase covers only the content listed in that product.</p></div><Button to="/purchases" variant="secondary">My access</Button></header>
+    <StatementHero>Get learning access for one skill or a complete career bundle.</StatementHero><div className="statement-hero__tools"><Button to="/purchases" variant="secondary">My access</Button></div>
     <ol className="sf-purchase-steps" aria-label="Purchase steps"><li aria-current="step">1. Choose a skill or career</li><li>2. Review your selection</li><li>3. Confirm payment</li><li>4. Start learning</li></ol>
     <p className="sf-store__notice">Pay by bank transfer or Easypaisa after selecting a product. Access starts after owner approval. Free planning tools and course previews remain available.</p>
     <div className="sf-checkout__actions sf-store__filters"><Button variant={type==="skill_pass"&&!productId?"primary":"secondary"} onClick={()=>setParams({type:"skill_pass"})}>Skill Pass · one skill</Button><Button variant={type==="career_bundle"&&!productId?"primary":"secondary"} onClick={()=>setParams({type:"career_bundle"})}>Career Bundle · related skills</Button><Button variant={type==="subscription"&&!productId?"primary":"secondary"} onClick={()=>setParams({type:"subscription"})}>Monthly · all access</Button><Button to="/dashboard" variant="secondary">Continue free</Button></div>

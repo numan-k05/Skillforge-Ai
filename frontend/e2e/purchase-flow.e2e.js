@@ -67,7 +67,7 @@ test("monthly card opens a 30-day all-access purchase without changing annual or
 });
 
 test("login keeps the chosen product and unpaid order grants no content",async({page})=>{
-  await fixture(page,{authenticated:false});await page.goto("/purchase/1/confirm");await expect(page.getByRole("heading",{name:"Welcome back"})).toBeVisible();await page.getByLabel("Email",{exact:true}).fill("learner@example.test");await page.getByLabel("Password",{exact:true}).fill("Password123!");await page.getByRole("button",{name:"Log in",exact:true}).click();
+  await fixture(page,{authenticated:false});await page.goto("/purchase/1/confirm");await expect(page.getByRole("heading",{name:"Welcome back"})).toBeVisible();await page.getByLabel("Email address",{exact:true}).fill("learner@example.test");await page.getByLabel("Password",{exact:true}).fill("Password123!");await page.getByRole("button",{name:"Log in",exact:true}).click();
   await expect(page.getByRole("heading",{name:"React Skill Pass",exact:true})).toBeVisible();await page.getByRole("button",{name:"Confirm selection and continue"}).click();await expect(page.getByRole("heading",{name:"Pay for your selection"})).toBeVisible();await expect(page.getByRole("link",{name:"Administration",exact:true})).toHaveCount(0);
   await page.goto("/my-access/1");await expect(page.getByRole("link",{name:"Review this selection"})).toBeVisible();await expect(page.getByRole("link",{name:"React foundations",exact:true})).toHaveCount(0);
 });

@@ -5,5 +5,7 @@ dist/
 
 .vercel
 .env*
+!.env.example
+!.env.vercel-free.example
 .agents/
 skills-lock.json

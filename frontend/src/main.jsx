@@ -6,8 +6,10 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import ToastProvider from "./components/ui/ToastProvider.jsx";
 import ThemeProvider from "./context/ThemeProvider.jsx";
 import "./styles/global.css";
+import "./styles/fonts.css";
 import "./styles/components.css";
 import "./styles/redesign.css";
+import "./styles/refinement.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

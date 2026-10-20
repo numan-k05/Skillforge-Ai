@@ -15,7 +15,8 @@ function databaseConnectionString(value) {
 
 export const pool = new Pool({
   max: env.databasePoolMax,
-  connectionTimeoutMillis: 5000,
+  // Allow the configured cloud database time to establish its first connection.
+  connectionTimeoutMillis: 15000,
   idleTimeoutMillis: 10000,
   allowExitOnIdle: true,
   connectionString: databaseConnectionString(env.databaseUrl),

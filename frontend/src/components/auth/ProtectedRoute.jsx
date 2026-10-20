@@ -1,3 +1,4 @@
+import StartupLoader from "../ui/StartupLoader.jsx";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth.js";
 
@@ -9,21 +10,7 @@ export default function ProtectedRoute({ children }) {
   const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 
-  if (loading) {
-    return (
-      <div
-        style={{
-          minHeight: "60vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "var(--text-secondary)",
-        }}
-      >
-        Loading…
-      </div>
-    );
-  }
+  if (loading) { return <StartupLoader message="Preparing your workspace…" />; }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" state={{ from: location }} replace />;

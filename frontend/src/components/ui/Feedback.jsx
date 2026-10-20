@@ -1,4 +1,5 @@
-import { AlertCircle, ArrowRight, Inbox, LoaderCircle } from "lucide-react";
+import { AlertCircle, ArrowRight, Inbox } from "lucide-react";
+import StartupLoader from "./StartupLoader.jsx";
 import Button from "./Button.jsx";
 import { Card } from "./Card.jsx";
 
@@ -12,5 +13,5 @@ export function Skeleton({ rows = 3, label = "Loading content" }) {
   return <div className="sf-skeleton-group" role="status" aria-label={label}><span className="visually-hidden">{label}</span>{Array.from({ length: rows }, (_, index) => <div key={index} className="sf-skeleton" aria-hidden="true" />)}</div>;
 }
 export function RouteLoading() {
-  return <main id="main-content" tabIndex={-1} className="sf-route-loading" role="status"><LoaderCircle className="spin" size={26} aria-hidden="true" /><p>Opening your workspace…</p></main>;
+  return <StartupLoader message="Opening your next chapter…" />;
 }

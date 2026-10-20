@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import StatementHero from "../../components/marketing/StatementHero.jsx";
 import "./PublicMarketingPage.css";
 
 const CONTENT = {
@@ -23,5 +23,5 @@ const CONTENT = {
 
 export default function LegalPage({ type }) {
   const page = CONTENT[type];
-  return <div className="public-page"><div className="container"><header className="public-page__hero"><span className="public-page__eyebrow"><FileText size={18} /> POLICY</span><h1>{page.title}</h1><p>{page.intro}</p></header>{page.sections.map(([title, text]) => <section className="public-section" key={title}><h2>{title}</h2><p>{text}</p></section>)}</div></div>;
+  return <div className="public-page"><div className="container"><StatementHero>{page.title}: {page.intro}</StatementHero>{page.sections.map(([title, text]) => <section className="public-section" key={title}><h2>{title}</h2><p>{text}</p></section>)}</div></div>;
 }

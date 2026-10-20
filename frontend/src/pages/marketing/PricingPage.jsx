@@ -1,3 +1,4 @@
+import StatementHero from "../../components/marketing/StatementHero.jsx";
 import { Check, ArrowRight, Info, Clock3, LockKeyhole } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth.js";
@@ -90,11 +91,7 @@ export default function PricingPage() {
   return (
     <section className="pricing" aria-labelledby="pricing-title">
       <div className="container">
-        <div className="section-head pricing__head">
-          <p className="pricing__eyebrow">SkillForge plans</p>
-          <h1 id="pricing-title">Start free. Choose one skill or a career bundle.</h1>
-          <p>Choose your skill or career first, review its price, then pay by bank transfer or Easypaisa. Your selection unlocks after owner approval.</p>
-        </div>
+        <StatementHero id="pricing-title">Compare free tools and paid learning access.</StatementHero>
 
         <div className="pricing__notice" role="status">
           <Info size={18} aria-hidden="true" />

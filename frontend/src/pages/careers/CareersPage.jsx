@@ -1,3 +1,5 @@
+import CoverPhoto from "../../components/marketing/CoverPhoto.jsx";
+import StatementHero from "../../components/marketing/StatementHero.jsx";
 import { useRef, useCallback, useEffect, useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import AppNav from "../../components/layout/AppNav.jsx";
@@ -71,14 +73,7 @@ export default function CareersPage() {
     <div>
       <AppNav />
       <div className="container sf-careers">
-        <div className="sf-careers__header">
-          <p className="sf-careers__eyebrow mono">Career Explorer</p>
-          <h1>Explore Careers</h1>
-          <p className="sf-careers__subtitle">
-            Browse the careers SkillForge AI supports and discover exactly which skills each one
-            requires.
-          </p>
-        </div>
+        <StatementHero>Explore careers and discover the skills each one needs.</StatementHero><CoverPhoto kind="careers" />
 
         {!loading && !error && (
           <div className="sf-careers__controls">

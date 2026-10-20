@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth.js";
 import { ApiError } from "../../services/apiClient.js";
 import Button from "../../components/ui/Button.jsx";
+import AuthField from "../../components/ui/AuthField.jsx";
+import { ArrowRight, LoaderCircle } from "lucide-react";
 import "./AuthForm.css";
 
 export default function LoginPage() {
@@ -16,15 +18,20 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
 
   function update(field) {
-    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+    return (e) => {
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+      setErrors(current => ({ ...current, [field]: undefined }));
+    };
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (submitting) return;
     setFormError("");
 
     const nextErrors = {};
     if (!form.email.trim()) nextErrors.email = "Email is required";
+    else if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) nextErrors.email = "Enter a valid email address";
     if (!form.password) nextErrors.password = "Password is required";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
@@ -52,8 +59,9 @@ export default function LoginPage() {
 
   return (
     <div className="sf-auth-form">
-      <h1>Welcome back</h1>
-      <p className="sf-auth-form__subtitle">Log in to continue building your roadmap.</p>
+      <p className="sf-auth-form__eyebrow">YOUR PERSONAL LEARNING SPACE</p>
+      <h1>Welcome back.</h1>
+      <p className="sf-auth-form__subtitle">Good to see you again. Let&apos;s keep growing.</p>
 
       {location.state?.passwordReset && (
         <div className="sf-auth-form__success" role="status">
@@ -67,29 +75,15 @@ export default function LoginPage() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate>
-        <label className="sf-auth-form__field">
-          <span>Email</span>
-          <input type="email" value={form.email} onChange={update("email")} autoComplete="email" />
-          {errors.email && <span className="sf-auth-form__error">{errors.email}</span>}
-        </label>
-
-        <label className="sf-auth-form__field">
-          <span>Password</span>
-          <input
-            type="password"
-            value={form.password}
-            onChange={update("password")}
-            autoComplete="current-password"
-          />
-          {errors.password && <span className="sf-auth-form__error">{errors.password}</span>}
-        </label>
+      <form onSubmit={handleSubmit} noValidate aria-busy={submitting}>
+        <AuthField label="Email address" name="email" type="email" value={form.email} onChange={update("email")} autoComplete="email" inputMode="email" placeholder="you@example.com" autoCapitalize="none" spellCheck={false} required error={errors.email} />
+        <AuthField label="Password" name="password" type="password" value={form.password} onChange={update("password")} autoComplete="current-password" placeholder="Enter your password" required error={errors.password} />
 
         <p className="sf-auth-form__forgot">
           <Link to="/forgot-password">Forgot password?</Link>
         </p>
 
-        <Button type="submit" variant="primary" size="lg" className="sf-auth-form__submit" disabled={submitting}>
+        <Button type="submit" variant="primary" size="lg" className="sf-auth-form__submit" disabled={submitting} icon={submitting ? <LoaderCircle className="spin" size={18} /> : <ArrowRight size={18} />}>
           {submitting ? "Logging in…" : "Log in"}
         </Button>
       </form>

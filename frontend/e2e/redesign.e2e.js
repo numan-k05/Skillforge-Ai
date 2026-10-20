@@ -92,7 +92,7 @@ test("public routes render with the new theme, a main landmark, and no horizonta
   }
   expect(errors).toEqual([]);
   await page.goto("/");
-  await expect(page.getByRole("heading", { name: "Build skills. Shape your future." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Build the skills you need for the career you want." })).toBeVisible();
   await page.screenshot({ path: testInfo.outputPath("landing.png"), fullPage: true });
 });
 
@@ -156,7 +156,7 @@ test("protected redirect returns to settings after login using the existing auth
   await fixtures(page);
   await page.goto("/settings");
   await expect(page.getByRole("heading", { name: "Welcome back" })).toBeVisible();
-  await page.getByLabel("Email", { exact: true }).fill("ada@example.test");
+  await page.getByLabel("Email address", { exact: true }).fill("ada@example.test");
   await page.getByLabel("Password", { exact: true }).fill("test-password");
   await page.getByRole("button", { name: "Log in", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Make this space yours." })).toBeVisible();
@@ -179,7 +179,7 @@ test("mobile navigation traps focus, supports Escape, and restores the menu trig
   await expect(trigger).toBeFocused();
   await trigger.click();
   await dialog.getByRole("link", { name: "Explore skills" }).click();
-  await expect(page.getByRole("heading", { name: "Your next chapter starts here." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Explore skills and find learning resources for your career." })).toBeVisible();
 });
 
 test("catalog API failures display a usable error and retry action", async ({ page }) => {

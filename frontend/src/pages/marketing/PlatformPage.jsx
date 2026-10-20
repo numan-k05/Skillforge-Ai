@@ -1,6 +1,6 @@
-import { BrainCircuit, Map, Target, CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
+import StatementHero from "../../components/marketing/StatementHero.jsx";
+import { BrainCircuit, Map, Target, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import Button from "../../components/ui/Button.jsx";
 import "./PlatformPage.css";
 
 const STEPS = [
@@ -25,17 +25,7 @@ export default function PlatformPage() {
   return (
     <section className="platform-page">
       <div className="container">
-        <div className="platform-hero">
-          <span className="platform-eyebrow"><Sparkles size={15} /> Explore SkillForge</span>
-          <h1>One platform for turning skills into a clear career path.</h1>
-          <p>
-            SkillForge connects career goals, skill gaps, roadmaps, projects, daily missions, and progress in one learning workflow.
-          </p>
-          <div className="platform-hero__actions">
-            <Button variant="primary" size="lg" to="/signup" icon={<ArrowRight size={18} />}>Build my roadmap</Button>
-            <Button variant="secondary" size="lg" to="/how-it-works">See how it works</Button>
-          </div>
-        </div>
+        <StatementHero>Plan your career and build your skills in one place.</StatementHero>
 
         <div className="platform-steps">
           {STEPS.map(({ icon: Icon, title, text }, index) => (

@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth.js";
 import { ApiError } from "../../services/apiClient.js";
 import Button from "../../components/ui/Button.jsx";
+import AuthField from "../../components/ui/AuthField.jsx";
+import { ArrowRight, LoaderCircle } from "lucide-react";
 import "./AuthForm.css";
 
 export default function SignupPage() {
@@ -16,7 +18,10 @@ export default function SignupPage() {
   const [submitting, setSubmitting] = useState(false);
 
   function update(field) {
-    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
+    return (e) => {
+      setForm((f) => ({ ...f, [field]: e.target.value }));
+      setErrors(current => ({ ...current, [field]: undefined }));
+    };
   }
 
   function validateClientSide() {
@@ -24,12 +29,14 @@ export default function SignupPage() {
     if (form.name.trim().length < 2) next.name = "Name must be at least 2 characters";
     if (!/^\S+@\S+\.\S+$/.test(form.email)) next.email = "Enter a valid email address";
     if (form.password.length < 8) next.password = "Password must be at least 8 characters";
-    if (form.password !== form.confirmPassword) next.confirmPassword = "Passwords do not match";
+    if (!form.confirmPassword) next.confirmPassword = "Confirm your password";
+    else if (form.password !== form.confirmPassword) next.confirmPassword = "Passwords do not match";
     return next;
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (submitting) return;
     setFormError("");
 
     const clientErrors = validateClientSide();
@@ -58,8 +65,9 @@ export default function SignupPage() {
 
   return (
     <div className="sf-auth-form">
-      <h1>Create your account</h1>
-      <p className="sf-auth-form__subtitle">Start turning your skills into a career roadmap.</p>
+      <p className="sf-auth-form__eyebrow">START YOUR NEXT CHAPTER</p>
+      <h1>A fresh start.</h1>
+      <p className="sf-auth-form__subtitle">Create your free account and make room for what&apos;s next.</p>
 
       {formError && (
         <div className="sf-auth-form__alert" role="alert">
@@ -67,42 +75,13 @@ export default function SignupPage() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate>
-        <label className="sf-auth-form__field">
-          <span>Name</span>
-          <input type="text" value={form.name} onChange={update("name")} autoComplete="name" />
-          {errors.name && <span className="sf-auth-form__error">{errors.name}</span>}
-        </label>
+      <form onSubmit={handleSubmit} noValidate aria-busy={submitting}>
+        <AuthField label="Full name" name="name" value={form.name} onChange={update("name")} autoComplete="name" placeholder="Your full name" required error={errors.name} />
+        <AuthField label="Email address" name="email" type="email" value={form.email} onChange={update("email")} autoComplete="email" inputMode="email" placeholder="you@example.com" autoCapitalize="none" spellCheck={false} required error={errors.email} />
+        <AuthField label="Password" name="password" type="password" value={form.password} onChange={update("password")} autoComplete="new-password" placeholder="Create a password" required hint="Use at least 8 characters." error={errors.password} />
+        <AuthField label="Confirm password" name="confirmPassword" type="password" value={form.confirmPassword} onChange={update("confirmPassword")} autoComplete="new-password" placeholder="Enter your password again" required error={errors.confirmPassword} />
 
-        <label className="sf-auth-form__field">
-          <span>Email</span>
-          <input type="email" value={form.email} onChange={update("email")} autoComplete="email" />
-          {errors.email && <span className="sf-auth-form__error">{errors.email}</span>}
-        </label>
-
-        <label className="sf-auth-form__field">
-          <span>Password</span>
-          <input
-            type="password"
-            value={form.password}
-            onChange={update("password")}
-            autoComplete="new-password"
-          />
-          {errors.password && <span className="sf-auth-form__error">{errors.password}</span>}
-        </label>
-
-        <label className="sf-auth-form__field">
-          <span>Confirm password</span>
-          <input
-            type="password"
-            value={form.confirmPassword}
-            onChange={update("confirmPassword")}
-            autoComplete="new-password"
-          />
-          {errors.confirmPassword && <span className="sf-auth-form__error">{errors.confirmPassword}</span>}
-        </label>
-
-        <Button type="submit" variant="primary" size="lg" className="sf-auth-form__submit" disabled={submitting}>
+        <Button type="submit" variant="primary" size="lg" className="sf-auth-form__submit" disabled={submitting} icon={submitting ? <LoaderCircle className="spin" size={18} /> : <ArrowRight size={18} />}>
           {submitting ? "Creating account…" : "Create account"}
         </Button>
       </form>
